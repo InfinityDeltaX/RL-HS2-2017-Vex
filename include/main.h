@@ -12,9 +12,17 @@ extern "C" {
 
 void yaw(int direction);
 void driveSet(int a, int b, int c, int d);
-void move(int forwardsbackwards, int sideways);
+void moveRelative(int forwardsbackwards, int sideways, int rotation);
+void movePolarRelative(float angle, int speed);
 void movementControl();
+void trackPosition();
 
+double computeAngleFromR(int r);
+void resetAllIMEs();
+
+int currentPositionX;
+int currentPositionY;
+int currentPositionR;
 
 int drivePort1;
 int drivePort2;
@@ -23,6 +31,9 @@ int drivePort4;
 
 int DIRECTION_LEFT;
 int DIRECTION_RIGHT;
+
+float encoderTicksPerTurn;
+int wheelTurnsPerRobotTurn; //TODO
 
 int driveMultiplier1;
 int driveMultiplier2;
